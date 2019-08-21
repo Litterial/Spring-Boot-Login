@@ -12,7 +12,8 @@ public class Role {
     private int id;
 
     private String role;
-    @ManyToMany(mappedBy = "roles")
+
+    @ManyToMany(mappedBy = "roles") //mappedBy used on non-owning side the value of of the identifier is the name of the field used in the owning side.
     private List<User> users;
 
     public int getId() {
