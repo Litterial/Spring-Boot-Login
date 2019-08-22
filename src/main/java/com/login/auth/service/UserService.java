@@ -20,15 +20,28 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
 
-    public void createUser (User user)
+    public void createUser(User user)
     {
         BCryptPasswordEncoder encoder= new BCryptPasswordEncoder(); // used to encrypt passwords
         user.setPassword(encoder.encode(user.getPassword())); // gets password, encodes password then sets it to the encrpytion
-        Role userRole =new Role("USER");//
+        Role userRole = new Role("USER");
         List<Role> roles = new ArrayList<>(); // uses arraylist to add roles
         roles.add(userRole); //adds role to list
         user.setRoles(roles); //sets "USER" role
         userDAO.save(user); //saves user to repo
+    }
+
+    public User findOne(String name) {
+        return userDAO.findOne(name);
+    }
+
+    public boolean doesUserExist(String name)
+    {
+        User isUser = userDAO.findOne(name);
+        if(isUser ==null)
+            return false;
+        return true;
+
     }
 
 }

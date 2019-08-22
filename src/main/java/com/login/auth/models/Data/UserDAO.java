@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
-@Repository
-@Transactional
-public interface UserDAO extends JpaRepository<User,Integer> {
+//@Repository
+//@Transactional
+public interface UserDAO extends JpaRepository<User, String> {
 }

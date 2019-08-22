@@ -8,9 +8,6 @@ import java.util.List;
 @Entity
 public class Role {
     @Id
-    @GeneratedValue
-    private int id;
-
     private String role;
 
     public Role(){};
@@ -22,13 +19,7 @@ public class Role {
     @ManyToMany(mappedBy = "roles") //mappedBy used on non-owning side the value of of the identifier is the name of the field used in the owning side.
     private List<User> users;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
     public String getRole() {
         return role;
     }
@@ -36,5 +27,14 @@ public class Role {
     public void setRole(String role) {
         this.role = role;
     }
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+
 
 }

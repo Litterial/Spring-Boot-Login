@@ -6,12 +6,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
+
 @Entity
+
 public class User {
  @Id
- @GeneratedValue //auto generates the id
-    private int id;
-
  @Column(unique = true) //looks for a unique column name
  @NotNull(message="This field is required")
  @Size(min=5,max=20)
