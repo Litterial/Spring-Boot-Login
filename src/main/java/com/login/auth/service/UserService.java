@@ -31,14 +31,14 @@ public class UserService {
         userDAO.save(user); //saves user to repo
     }
 
-    public User findOne(String name) {
-        return userDAO.findOne(name);
+    private User findUser(String username) {
+        return userDAO.findById(username).orElse(null);
     }
 
     public boolean doesUserExist(String name)
     {
-        User isUser = userDAO.findOne(name);
-        if(isUser ==null)
+        User isUser = findUser(name);
+        if(isUser == null)
             return false;
         return true;
 
