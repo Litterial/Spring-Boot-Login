@@ -5,8 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.util.Set;
-
+import java.util.List;
 @Entity
 public class User {
  @Id
@@ -28,7 +27,7 @@ public class User {
  @JoinTable(name="USER_ROLES", //creates a table for the relationship between User and Role. User is the owning side
          joinColumns = {@JoinColumn(name="USER_USERNAME",referencedColumnName = "username")}, // primary key for the owning side (User)
          inverseJoinColumns = {@JoinColumn(name="ROLE_ROLE",referencedColumnName = "role")}) //primary key for the non-owning side;reference the name of the column in the other class
-    private Set<Role> roles;
+    private List<Role> roles;
 
     public User(){}
 
@@ -48,11 +47,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 }
