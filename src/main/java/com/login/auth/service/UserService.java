@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
-@Service
+@Service //used to hold business logic, or the code to create the business rules around how data is created and changed
 public class UserService {
 
     @Autowired
@@ -22,13 +22,13 @@ public class UserService {
 
     public void createUser (User user)
     {
-        BCryptPasswordEncoder encoder= new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(user.getPassword()));
-        Role userRole =new Role("USER");
-        List<Role> roles = new ArrayList<>();
-        roles.add(userRole);
-        user.setRoles(roles);
-        userDAO.save(user);
+        BCryptPasswordEncoder encoder= new BCryptPasswordEncoder(); // used to encrypt passwords
+        user.setPassword(encoder.encode(user.getPassword())); // gets password, encodes password then sets it to the encrpytion
+        Role userRole =new Role("USER");//
+        List<Role> roles = new ArrayList<>(); // uses arraylist to add roles
+        roles.add(userRole); //adds role to list
+        user.setRoles(roles); //sets "USER" role
+        userDAO.save(user); //saves user to repo
     }
 
 }
