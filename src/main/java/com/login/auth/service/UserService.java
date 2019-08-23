@@ -31,17 +31,9 @@ public class UserService {
         userDAO.save(user); //saves user to repo
     }
 
-    private User findUser(String username) {
-        return userDAO.findById(username).orElse(null);
+    public boolean findUser(String username) {
+        return userDAO.existsByIdIgnoreCase(username);
     }
 
-    public boolean doesUserExist(String name)
-    {
-        User isUser = findUser(name);
-        if(isUser == null)
-            return false;
-        return true;
-
-    }
 
 }

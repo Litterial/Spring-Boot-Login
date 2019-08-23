@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-
+@Table(name="Users")
 public class User {
  @Id
  @Column(unique = true) //looks for a unique column name
