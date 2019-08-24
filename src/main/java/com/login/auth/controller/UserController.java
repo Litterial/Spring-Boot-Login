@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @RequestMapping(value="register", method=RequestMethod.POST)
-    public String verifyRegister(@Valid @ModelAttribute("user") User createUser, Errors err, Model model)
+    public String verifyRegister(@Valid @ModelAttribute("user") User createUser, Errors err)
     {
         System.out.println("registerPost");
         if (err.hasErrors()) return "register";
