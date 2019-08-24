@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
 <form method ="post" th:object ="${user}">
     <div th:class="field">
+        <span th:errors="*{username}"></span>
+        <label for="username">Username</label>
     <input type="text" th:field="*{username}"/>
     </div>
     <div th:class="field">
+        <span th:errors="*{password}"></span>
+        <label for="password">Password</label>
         <input type="password" th:field="*{password}"/>
     </div>
+    <input type="submit" name="submit">
 </form>
 </body>
 </html>

@@ -19,6 +19,7 @@ import org.springframework.validation.Errors;
 public class UserController {
     @Autowired
     private UserService userService;
+
     @RequestMapping(value="")
     public String index(Model model)
     {
@@ -33,11 +34,19 @@ public class UserController {
         return "register";
     }
 
-//    @RequestMapping(value="register", method=RequestMethod.POST)
-//    public String verifyRegister(@Valid @ModelAttribute("user") User createUser, Errors err, Model model)
-//    {
-//        System.out.println("registerPost");
-//    }
+    @RequestMapping(value="register", method=RequestMethod.POST)
+    public String verifyRegister(@Valid @ModelAttribute("user") User createUser, Errors err, Model model)
+    {
+        System.out.println("registerPost");
+        if (err.hasErrors()) return "register";
+        if (userService.findUser(createUser.getUsername()))
+        {
+            return "register";
+        }
+        userService.createUser(createUser);
+
+        return "redirect:./success";
+    }
 }
 
 

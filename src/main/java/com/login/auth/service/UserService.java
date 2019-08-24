@@ -33,7 +33,7 @@ public class UserService {
         userDAO.save(user); //saves user to repo
     }
 
-    public boolean findUser(Id username) {
+    public boolean findUser(String username) {
         return userDAO.existsByIdIgnoreCase(username);
     }
 
