@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.persistence.Id;
+
 
 @Service //used to hold business logic, or the code to create the business rules around how data is created and changed
 public class UserService {
@@ -31,7 +33,7 @@ public class UserService {
         userDAO.save(user); //saves user to repo
     }
 
-    public boolean findUser(String username) {
+    public boolean findUser(Id username) {
         return userDAO.existsByIdIgnoreCase(username);
     }
 
