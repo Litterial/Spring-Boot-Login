@@ -34,7 +34,10 @@ public class UserService {
     }
 
     public boolean findUser(String username) {
-        return userDAO.existsByIdIgnoreCase(username);
+        System.out.println("Is this an error");
+        System.out.println(userDAO.existsByIdIgnoreCase(username));
+        System.out.println(username);
+        return (userDAO.existsByIdIgnoreCase(username) == null);
     }
 
 

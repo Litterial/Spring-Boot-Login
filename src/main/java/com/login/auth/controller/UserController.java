@@ -35,17 +35,24 @@ public class UserController {
     }
 
     @RequestMapping(value="register", method=RequestMethod.POST)
-    public String verifyRegister(@Valid @ModelAttribute("user") User createUser, Errors err)
+    public String verifyRegister(@Valid @ModelAttribute("user") User createUser, Errors err, Model model  )
     {
         System.out.println("registerPost");
-        if (err.hasErrors()) return "register";
-        if (userService.findUser(createUser.getUsername()))
+        if (err.hasErrors())
         {
+            System.out.println("errors");
             return "register";
         }
+        if (!userService.findUser(createUser.getUsername()))
+        {
+            model.addAttribute("message","This username already exist");
+            model.addAttribute("user",new User());
+            return "register";
+        }
+        System.out.println("Passed all test");
         userService.createUser(createUser);
 
-        return "redirect:./success";
+        return "redirect:";
     }
 }
 

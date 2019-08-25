@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 @Transactional
 public interface UserDAO extends JpaRepository<User, String> {
-    @Query("select username,password from User where upper(username)= upper(username)")
-    Boolean existsByIdIgnoreCase(String username);
+    @Query("select username from User where upper(username)= upper(:username)")
+    String existsByIdIgnoreCase(String username);
 }

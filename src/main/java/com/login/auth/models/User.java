@@ -1,5 +1,7 @@
 package com.login.auth.models;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.annotation.Generated;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -8,9 +10,9 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
+@Table(name="users")
 public class User {
  @Id
- @Column(unique = true) //looks for a unique column name
  @NotNull(message="This field is required")
  @Size(min=5,max=20)
  @Pattern(regexp = "\\S+", message="Spaces are not allowed") //regex pattern to not allow spaces
