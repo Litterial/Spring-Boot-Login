@@ -26,6 +26,13 @@ public class UserController {
         model.addAttribute("title","Hello World");
         return "index";
     }
+
+    @RequestMapping(value="/login")
+    public String login()
+    {
+        return "login";
+    }
+
     @RequestMapping(value="register",method = RequestMethod.GET)
     public String RegisterForm(Model model)
     {
