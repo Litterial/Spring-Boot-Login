@@ -3,6 +3,7 @@ package com.login.auth.controller;
 import com.login.auth.models.Data.UserDAO;
 import com.login.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,9 +22,12 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value="")
-    public String index(Model model)
+    public String index(Model model, Authentication authentication)
     {
         model.addAttribute("title","Hello World");
+        if (authentication != null)
+            model.addAttribute("title","Hello "+ authentication.getName());
+
         return "index";
     }
 
